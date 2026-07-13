@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP ALL FREE FIRE | TRUNGSANG X CHEAT</title>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    body{background:#05050a;color:#fff;min-height:100vh;overflow-x:hidden}
+    /* ===== MÀN HÌNH CHÀO MỪNG ===== */
+    #splash{
+        position:fixed;inset:0;z-index:9999;
+        background:linear-gradient(135deg,#0a0014,#1a0033,#000);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        gap:20px;transition:opacity .8s ease,visibility .8s ease;
+    }
+    .splash-text{
+        font-size:clamp(22px,5vw,48px);font-weight:900;text-align:center;
+        color:#fff;
+        text-shadow:
+            0 0 5px #ff00ff,0 0 10px #ff00ff,0 0 20px #ff00ff,
+            0 0 40px #00e5ff,0 0 80px #00e5ff;
+        animation:glowPulse 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse{
+        from{filter:brightness(1)}to{filter:brightness(1.4)}
+    }
+    .loader{width:60px;height:60px;border-radius:50%;
+        border:4px solid transparent;
+        border-top:4px solid #00e5ff;border-right:4px solid #ff00ff;
+        animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .hidden-splash{opacity:0;visibility:hidden}
+
+    /* ===== NỘI DUNG CHÍNH ===== */
+    #main-content{opacity:0;transition:opacity 1s ease;padding:20px;padding-bottom:120px}
+    .show-main{opacity:1 !important}
+    .header{
+        text-align:center;padding:30px 10px;margin-bottom:25px;
+        border:2px solid #00e5ff;border-radius:16px;
+        box-shadow:0 0 10px #00e5ff,0 0 25px #00e5ff,inset 0 0 15px rgba(0,229,255,.2);
+        background:rgba(10,10,25,.7);backdrop-filter:blur(6px);
+    }
+    .header h1{
+        font-size:clamp(20px,4.5vw,38px);
+        color:#fff;text-shadow:0 0 6px #ff2bd6,0 0 12px #ff2bd6,0 0 24px #00eaff;
+    }
+
+    /* ===== HIỆU ỨNG TẢI ===== */
+    .loading{
+        display:none;justify-content:center;padding:30px;
+        color:#00e5ff;font-size:18px;
+        text-shadow:0 0 8px #00e5ff;
+    }
+    .tab-panel{display:none;animation:fadeIn .5s ease}
+    .tab-panel.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    /* ===== SẢN PHẨM VÀ HÌNH ẢNH TRANG TRÍ ===== */
+    .product-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .product{
+        position:relative;overflow:hidden;border-radius:14px;padding:20px;
+        border:2px solid;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;
+        background-size:cover;background-position:center;background-repeat:no-repeat;
+    }
+    .product::before{
+        content:"";position:absolute;inset:0;
+        background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.85));
+    }
+    .product > *{position:relative;z-index:2}
+    .product h3{
+        font-size:20px;margin-bottom:10px;
+        text-shadow:0 0 6px currentColor,0 0 12px currentColor;
+    }
+    .price{margin:4px 0;font-size:15px}
+    .tag{display:inline-block;padding:3px 8px;margin:2px;border-radius:6px;font-size:12px;background:rgba(255,255,255,.15)}
+
+    /* MÀU SẮC TỪNG SẢN PHẨM + ẢNH NỀN TỰ TẠO */
+    .p1{border-color:#00eaff;box-shadow:0 0 10px #00eaff,0 0 22px #00eaff;
+        background-image:linear-gradient(135deg,#001e3c,#0066aa,#00c6ff)}
+    .p2{border-color:#b14bff;box-shadow:0 0 10px #b14bff,0 0 22px #b14bff;
+        background-image:linear-gradient(135deg,#2a0050,#6a0dad,#e040fb)}
+    .p3{border-color:#39ff14;box-shadow:0 0 10px #39ff14,0 0 22px #39ff14;
+        background-image:linear-gradient(135deg,#052e05,#0f7a0f,#7cfc00)}
+    .p4{border-color:#ff3860;box-shadow:0 0 10px #ff3860,0 0 22px #ff3860;
+        background-image:linear-gradient(135deg,#4a0010,#c2185b,#ff6b9d)}
+    .p5{border-color:#ffd700;box-shadow:0 0 10px #ffd700,0 0 22px #ffd700;
+        background-image:linear-gradient(135deg,#3d2e00,#b8860b,#ffec8b)}
+    .p6{border-color:#00fff7;box-shadow:0 0 10px #00fff7,0 0 22px #00fff7;
+        background-image:linear-gradient(135deg,#003638,#008b8b,#40e0d0)}
+
+    /* ===== THANH TAB Ở DƯỚI ===== */
+    .tab-bar{
+        position:fixed;left:0;right:0;bottom:0;z-index:100;
+        display:grid;grid-template-columns:repeat(3,1fr);
+        background:rgba(5,5,15,.92);backdrop-filter:blur(8px);
+        border-top:2px solid #444;
+    }
+    .tab-btn{
+        padding:14px 6px;font-size:15px;font-weight:700;cursor:pointer;
+        background:transparent;color:#aaa;border:none;outline:none;
+        border-top:3px solid transparent;transition:.25s;
+    }
+    .tab-btn:nth-child(1).active{color:#00eaff;border-color:#00eaff;text-shadow:0 0 8px #00eaff;box-shadow:inset 0 3px 12px rgba(0,229,255,.35)}
+    .tab-btn:nth-child(2).active{color:#ff2bd6;border-color:#ff2bd6;text-shadow:0 0 8px #ff2bd6;box-shadow:inset 0 3px 12px rgba(255,43,214,.35)}
+    .tab-btn:nth-child(3).active{color:#ffd700;border-color:#ffd700;text-shadow:0 0 8px #ffd700;box-shadow:inset 0 3px 12px rgba(255,215,0,.35)}
+
+    .info-card{
+        padding:22px;border-radius:14px;margin-top:15px;
+        border:2px solid #ffd700;
+        box-shadow:0 0 10px #ffd700,0 0 22px #ffd700;
+        background:rgba(20,15,0,.6);
+    }
+    .info-card a{
+        display:block;color:#00eaff;margin:8px 0;font-size:16px;
+        text-shadow:0 0 6px #00eaff;text-decoration:none;
+    }
+    .info-card a:hover{color:#fff;text-shadow:0 0 12px #fff}
+
+    /* NÚT NHẠC */
+    .music-btn{
+        position:fixed;top:15px;right:15px;z-index:998;
+        width:46px;height:46px;border-radius:50%;cursor:pointer;
+        background:#111;color:#00eaff;border:2px solid #00eaff;
+        box-shadow:0 0 8px #00eaff;font-size:18px;
+    }
+    .music-btn.on{color:#ff2bd6;border-color:#ff2bd6;box-shadow:0 0 12px #ff2bd6;animation:glowPulse 1.2s infinite alternate}
+</style>
+</head>
+<body>
+
+<!-- MÀN HÌNH CHÀO -->
+<div id="splash">
+    <div class="splash-text">CHÀO MỪNG ĐẾN VỚI SHOP ALL FREE FIRE</div>
+    <div class="splash-text">TRUNGSANG X CHEAT🚀</div>
+    <div class="loader"></div>
+    <div style="color:#bbb">Đang chuẩn bị shop...</div>
+</div>
+
+<!-- NÚT BẬT/TẮT NHẠC -->
+<button class="music-btn" id="musicBtn" title="Bật/Tắt nhạc">🔇</button>
+
+<!-- NHẠC NỀN: BÀI PHƯƠNG LY -->
+<audio id="bgMusic" loop preload="auto">
+    <!-- Bạn có thể thay link nhạc trực tiếp ở dưới đây -->
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+
+
+<!-- NỘI DUNG CHÍNH -->
+<div id="main-content">
+    <div class="header">
+        <h1>🔥 SHOP ALL FREE FIRE 🔥</h1>
+        <h2 style="margin-top:8px;color:#ffd700;text-shadow:0 0 8px #ffd700">TRUNGSANG X CHEAT 🚀</h2>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading" id="loading">⏳ Đang tải dữ liệu...</div>
+
+    <!-- TAB 1: SHOP ALL -->
+    <div class="tab-panel active" id="tab-shop">
+        <h2 style="color:#00eaff;text-shadow:0 0 8px #00eaff;margin:15px 0">🛒 SHOP ALL</h2>
+        <div class="product-grid">
+            <div class="product p1"><h3 style="color:#00eaff">DRIP MENU, PROXY ADR 🚀</h3></div>
+            <div class="product p2"><h3 style="color:#e0a8ff">FLUORITE 🚀</h3></div>
+            <div class="product p3"><h3 style="color:#a8ff7a">MIGUL LITE 🚀</h3></div>
+            <div class="product p4"><h3 style="color:#ffb3c1">MIGUL PRO 🚀</h3></div>
+            <div class="product p5"><h3 style="color:#ffe666">PROXY VIP V2 🚀<br><small>(All AIM)</small></h3></div>
+            <div class="product p6"><h3 style="color:#9ffefc">CHỨNG CHỈ 👑ESGIN💎</h3></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: GIÁ / ALL SP -->
+    <div class="tab-panel" id="tab-price">
+        <h2 style="color:#ff2bd6;text-shadow:0 0 8px #ff2bd6;margin:15px 0">💰 GIÁ / ALL SP</h2>
+        <div class="product-grid">
+            <div class="product p1">
+                <h3 style="color:#00eaff">DRIP MENU ADR 🚀</h3>
+                <div class="price">180.000 VNĐ — 7 NGÀY 🛍️</div>
+                <div class="price">350.000 VNĐ — 30 NGÀY 🛍️</div>
+                <hr style="margin:8px 0;border-color:#00eaff55">
+                <h4 style="color:#00eaff">PROXY ADR 🚀</h4>
+                <div class="price">80.000 VNĐ — 1 NGÀY 🛍️</div>
+                <div class="price">160.000 VNĐ — 7 NGÀY 🛍️</div>
+                <div class="price">320.000 VNĐ — 30 NGÀY 🛍️</div>
+                <div><span class="tag">ANTIBAN ✅</span><span class="tag">ALL ADR ✅</span></div>
+            </div>
+
+            <div class="product p2">
+                <h3 style="color:#e0a8ff">FLUORITE 🚀</h3>
+                <div class="price">120.000 VNĐ — 1 NGÀY 🛍️</div>
+                <div class="price">280.000 VNĐ — 7 NGÀY 🛍️</div>
+                <div class="price">520.000 VNĐ — 30 NGÀY 🛍️</div>
+                <div><span class="tag">ANTIBAN ✅</span><span class="tag">TIPA ALL IOS ✅</span></div>
+            </div>
+
+            <div class="product p3">
+                <h3 style="color:#a8ff7a">MIGUL LITE 🚀</h3>
+                <div class="price">100.000 VNĐ — 1 NGÀY 🛍️</div>
+                <div class="price">300.000 VNĐ — 7 NGÀY 🛍️</div>
+                <div class="price">700.000 VNĐ — 30 NGÀY 🛍️</div>
+                <hr style="margin:8px 0;border-color:#39ff1455">
+                <h4 style="color:#a8ff7a">MIGUL PRO 🚀</h4>
+                <div class="price">25.000 VNĐ — 1 GIỜ 🛍️</div>
+                <div class="price">170.000 VNĐ — 1 NGÀY 🛍️</div>
+                <div class="price">310.000 VNĐ — 7 NGÀY 🛍️</div>
+                <div class="price">715.000 VNĐ — 30 NGÀY 🛍️</div>
+                <div><span class="tag">ANTIBAN ✅</span><span class="tag">ALL IOS ✅</span></div>
+            </div>
+
+            <div class="product p4">
+                <h3 style="color:#ffb3c1">PROXY VIP V2 🚀<br><small>(ALL AIM)</small></h3>
+                <div class="price">30.000 VNĐ — 1 NGÀY 🛍️</div>
+                <div class="price">110.000 VNĐ — 7 NGÀY 🛍️</div>
+                <div class="price">220.000 VNĐ — 30 NGÀY 🛍️</div>
+            </div>
+
+            <div class="product p5">
+                <h3 style="color:#ffe666">📋 GÓI IPHONE / IPAD</h3>
+                <div class="price">• 80.000 VND 🛍️ — Dùng ngay, Không BH</div>
+                <div class="price">• 140.000 VND 🛍️ — Dùng ngay, BH 40 NGÀY</div>
+                <div class="price">• 180.000 VND 🛍️ — Dùng ngay, BH 300 NGÀY</div>
+                <div style="margin-top:8px;color:#ffd700">👉 Toàn bộ có CHỨNG CHỈ 1 NĂM</div>
+                <div style="margin-top:8px;font-size:13px">⚙️ Chức năng chi tiết vui lòng liên hệ ADMIN</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: THÔNG TIN / ADMIN -->
+    <div class="tab-panel" id="tab-admin">
+        <h2 style="color:#ffd700;text-shadow:0 0 8px #ffd700;margin:15px 0">👤 THÔNG TIN ADMIN</h2>
+        <div class="info-card">
+            <h3 style="color:#ffd700;text-shadow:0 0 6px #ffd700">📞 ZALO ADMIN</h3>
+            <a href="https://zalo.me/0372822927" target="_blank">💬 SĐT / Zalo: 0372822927</a>
+            <a href="https://zalo.me/g/myvfgfidweld9ovmd7t4" target="_blank">📦 BOX NHÓM: zalo.me/g/myvfgfidweld9ovmd7t4</a>
+            <p style="margin-top:14px;color:#fff;text-shadow:0 0 6px #fff">
+                🛍️ Vui lòng liên hệ ADMIN để mua những gì bạn thích 🛍️
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- THANH TAB -->
+<div class="tab-bar">
+    <button class="tab-btn active" data-tab="tab-shop">🛒 SHOP ALL</button>
+    <button class="tab-btn" data-tab="tab-price">💰 GIÁ</button>
+    <button class="tab-btn" data-tab="tab-admin">👤 ADMIN</button>
+</div>
+
+<script>
+    // ==== MÀN HÌNH CHỜ 1–10 GIÂY NGẪU NHIÊN ====
+    const waitTime = 1000 + Math.random()*9000;
+    setTimeout(()=>{
+        document.getElementById('splash').classList.add('hidden-splash');
+        document.getElementById('main-content').classList.add('show-main');
+    }, waitTime);
+
+    // ==== CHUYỂN TAB + TẢI 1–3 GIÂY ====
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    const loading = document.getElementById('loading');
+
+    tabs.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const target = btn.dataset.tab;
+            tabs.forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // HIỆN LOADING
+            panels.forEach(p=>p.classList.remove('active'));
+            loading.style.display='flex';
+
+            const loadDelay = 1000 + Math.random()*2000;
+            setTimeout(()=>{
+                loading.style.display='none';
+                document.getElementById(target).classList.add('active');
+                window.scrollTo({top:0,behavior:'smooth'});
+            }, loadDelay);
+        });
+    });
+
+    // ==== NHẠC NỀN ====
+    const music = document.getElementById('bgMusic');
+    const mBtn = document.getElementById('musicBtn');
+    let isOn = false;
+
+    // Tự động cố gắng phát sau màn hình chào
+    setTimeout(()=>music.play().catch(()=>{}), waitTime+500);
+
+    mBtn.addEventListener('click',()=>{
+        isOn = !isOn;
+        if(isOn){
+            music.play();
+            mBtn.textContent='🔊';
+            mBtn.classList.add('on');
+        }else{
+            music.pause();
+            mBtn.textContent='🔇';
+            mBtn.classList.remove('on');
+        }
+    });
+    music.addEventListener('play',()=>{mBtn.textContent='🔊';mBtn.classList.add('on');isOn=true});
+    music.addEventListener('pause',()=>{mBtn.textContent='🔇';mBtn.classList.remove('on');isOn=false});
+</script>
+</body>
+</html>
